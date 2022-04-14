@@ -33,7 +33,7 @@ const Allreceptionist = () => {
 }
 
 const update = (id) => {
-    const url = `adddoctor/${id}`;
+    const url = `updatereceptionist/${id}`;
     history.push(url);
 }
     return(

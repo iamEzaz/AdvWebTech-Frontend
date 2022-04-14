@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
@@ -10,6 +11,7 @@ import AdminHome from '../AdminHome/AdminHome';
 import Myprofile from '../AdminProfle/AdminProfile';
 import EditAdmitProfile from '../AdminProfle/EditAdminprofile/EditAdminprofile';
 import Allreceptionist from '../Allreceptionist/Allreceptionist';
+import EditReceptionst from '../Allreceptionist/EditReceptionist/Editreception';
 import Doctorlist from '../DoctorList/Doctorlist';
 import EditDoctor from '../EditDoctor/EditDoctor';
 import Patientlist from '../PatientList/Patientlist';
@@ -17,6 +19,27 @@ import Patientlist from '../PatientList/Patientlist';
 const AdminDashboard = () => {
     let { path, url } = useRouteMatch();
     const username = localStorage.getItem('username');
+    const history = useHistory();
+
+    const logout = (event) => {
+        event.preventDefault();
+        const data = {
+            token: localStorage.getItem('token')
+        };
+        //console.log(data);
+       
+               
+                    
+                    localStorage.removeItem('type');
+                    localStorage.removeItem('id');
+                    localStorage.removeItem('name');
+                    localStorage.removeItem('email');
+                    localStorage.removeItem('username');
+                    alert("Logout Success");
+                    history.push('/');
+               
+            
+    }
     return (
         <>
 
@@ -70,15 +93,17 @@ const AdminDashboard = () => {
                     <div  >
                         
                        <div class="d-inline-flex">
+                       {username && 
                        <NavLink className=" me-2 buttonlogin"
                                 to={`${url}/myaprofile`} style={{ textDecoration: 'none'}}>
                                 <span class="item-text">My Profile</span>
                             </NavLink>
+                            }
                         
 
                         {
                             username ?
-                            <button  className='buttonlogin'><Link  style={{ textDecoration: 'none', color: 'white' }}    >Logout</Link></button> 
+                            <button onClick={logout}  className='buttonlogin'><Link   style={{ textDecoration: 'none', color: 'white' }}    >Logout</Link></button> 
                             :
                             <button id='login-button' className='buttonlogin'><Link to='/login' style={{ textDecoration: 'none', color: 'white' }}    >Login</Link></button>
                         }
@@ -116,9 +141,9 @@ const AdminDashboard = () => {
                         <Allreceptionist></Allreceptionist>
                         </Route>
                         <Route exact path={`${path}/updatereceptionist/:id`}>
-                        <EditDoctor></EditDoctor>
+                        <EditReceptionst></EditReceptionst>
                         </Route>
-                        <Route exact path={`${path}/adddoctor/:id`}>
+                        <Route exact path={`${path}/editdoctor/:id`}>
                         <EditDoctor></EditDoctor>
                         </Route>
                         <Route exact path={`${path}/myaprofile`}>

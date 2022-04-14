@@ -34,7 +34,7 @@ const AddReceptionist = () => {
                 if (response.data.validation_errors) {
                     setReceptionist({ ...addreceptionist, errors: response.data.validation_errors });
                     
-                    alert(response.data.validation_errors);
+                    alert("reciptionist add error");
                 } else {
 
                     alert("Receptionst add Success");

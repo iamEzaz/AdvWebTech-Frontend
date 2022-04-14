@@ -46,10 +46,10 @@ const EditDoctor = () => {
                 if (response.data.validation_errors) {
                     setUpdatedoctor({ ...updatedoctor, errors: response.data.validation_errors });
                     
-                    alert("Doctor add Error");
+                    alert("Doctor update Error");
                 } else {
 
-                    alert("Doctor add Success");
+                    alert("Doctor add Successfully");
                     history.push("/dashboard");
 
                 }

@@ -31,7 +31,7 @@ const Doctorlist = () => {
 
 }
 const update = (id) => {
-    const url = `adddoctor/${id}`;
+    const url = `editdoctor/${id}`;
     history.push(url);
 }
     return (
