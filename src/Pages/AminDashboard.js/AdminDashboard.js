@@ -53,7 +53,7 @@ const AdminDashboard = () => {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <NavLink className="nav-link active" to={`${url}/home`}>
+                            <NavLink className="nav-link active" to={`${url}`}>
                                 Dashboard Home
                             </NavLink>
                         </li>
