@@ -5,6 +5,7 @@ import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Login from './Login/Login';
 import AdminDashboard from './Pages/AminDashboard.js/AdminDashboard';
+const id = parseInt(localStorage.getItem('id'));
 
 function App() {
   return (
@@ -17,9 +18,15 @@ function App() {
        <Route path="/login">
          <Login></Login>
        </Route>
-       <Route path="/dashboard">
+       {
+         id ?
+         <Route path="/dashboard">
          <AdminDashboard></AdminDashboard>
        </Route>
+       :
+       <Login></Login>
+       }
+       
        </Switch></BrowserRouter>
     </div>
   );

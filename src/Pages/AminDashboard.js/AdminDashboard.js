@@ -10,6 +10,7 @@ import AddReceptionist from '../AddReceptionist/AddReceptionist';
 import AdminHome from '../AdminHome/AdminHome';
 import Myprofile from '../AdminProfle/AdminProfile';
 import EditAdmitProfile from '../AdminProfle/EditAdminprofile/EditAdminprofile';
+import Allappointments from '../AllAppoinmens/Allappointments';
 import Allreceptionist from '../Allreceptionist/Allreceptionist';
 import EditReceptionst from '../Allreceptionist/EditReceptionist/Editreception';
 import Doctorlist from '../DoctorList/Doctorlist';
@@ -46,7 +47,7 @@ const AdminDashboard = () => {
         <nav class="navbar navbar-expand-lg navbar-light  headr">
             <div class="container-fluid">
                 
-                <span class='patientdashboard'>Dashboard</span>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -85,6 +86,12 @@ const AdminDashboard = () => {
                             <NavLink className="nav-link active"
                                 to={`${url}/patientlist`}>
                                 <span class="item-text">All Patient</span>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink className="nav-link active"
+                                to={`${url}/alappointment`}>
+                                <span class="item-text">All Appointment</span>
                             </NavLink>
                         </li>
                         
@@ -130,6 +137,9 @@ const AdminDashboard = () => {
                         </Route>
                         <Route exact path={`${path}/patientlist`}>
                         <Patientlist></Patientlist>
+                        </Route>
+                        <Route exact path={`${path}/alappointment`}>
+                        <Allappointments></Allappointments>
                         </Route>
                         <Route exact path={`${path}/adddoctor`}>
                         <AddDoctor></AddDoctor>

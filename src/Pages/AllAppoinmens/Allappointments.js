@@ -1,23 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
-const Doctorlist = () => {
-    const [doctors,setDoctors]= useState([]);
-    const history = useHistory();
+const Allappointments = () => {
+    const [appointments,setAppointments]= useState([]);
+    
   
     useEffect(function () {
-        axios.get("http://localhost:8000/api/alldoctor")
+        axios.get("http://localhost:8000/api/allappointment")
             .then(function (rsp) {
                 //console.log(rsp)
-                 setDoctors(rsp.data);
+                 setAppointments(rsp.data);
             }, function (err) {
 
             });
-    }, [doctors]);
+    }, [appointments]);
+
     const handledelete = id => {
         
-        axios.post(`http://localhost:8000/api/deletepatient/${id}`)
+        axios.post(`http://localhost:8000/api/dltappointment/${id}`)
             .then(res => {
                 if (res) {
                  
@@ -30,10 +30,6 @@ const Doctorlist = () => {
     
 
 }
-const update = (id) => {
-    const url = `dashboard/editdoctor/${id}`;
-    history.push(url);
-}
     return (
         <section>
          <div className="">
@@ -44,23 +40,29 @@ const update = (id) => {
                             <table class="table table-bordered border-primary">
                                 <thead>
                                     <tr>
-                                        <th >Name</th>
-                                        <th >department</th>
-                                        <th >Email</th>
+                                        <th >Patient Name</th>
+                                        <th >Patient Id</th>
+                                        <th >Doctor</th>
+                                        <th >Patient Email</th>
+                                        <th >Date</th>
+                                        <th >Slot</th>
                                         <th >Action</th>
-                                        <th >Edit</th>
+                                       
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
-                                        doctors.map(dc =>
+                                        appointments.map(dc =>
                                             <tr>
-                                                <td >{dc.name}</td>
-                                                <td>{dc.department}</td>
-                                                <td>{dc.email}</td>
+                                                <td >{dc.patientname}</td>
+                                                <td>{dc.patientid}</td>
+                                                <td>{dc.dname}</td>
+                                                <td>{dc.pemail}</td>
+                                                <td>{dc.day}</td>
+                                                <td>{dc.slot}</td>
                                                 <td><button onClick={()=>handledelete(dc.id)}> Delete </button></td>
-                                                <td><button onClick={()=>update(dc.id)}> Edit </button></td>
+                                                
                                                 
                                             </tr>
     
@@ -81,10 +83,7 @@ const update = (id) => {
             
  
         </section>
-        
-       
-        
     );
 };
 
-export default Doctorlist;
+export default Allappointments;
