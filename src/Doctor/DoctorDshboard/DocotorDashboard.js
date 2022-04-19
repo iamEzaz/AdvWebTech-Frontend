@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
 import Myprofile from '../../Pages/AdminProfle/AdminProfile';
+import AllPatientlist from '../ALLPatientlistdc/AllPatientlist';
 import DoctorMyProfile from '../DoctorMyProfile/DoctorMyProfile';
 import MyPtAppointment from '../MyPatientappointment/MyPtAppointment';
 import UpdateDoctorProfile from '../UpdateDoctorProfile/UpdateDoctorProfile';
@@ -14,8 +15,9 @@ const DocotorDashboard = () => {
     let { path, url } = useRouteMatch();
     const username = localStorage.getItem('username');
     const history = useHistory();
-    const dcid = localStorage.getItem('dcid');
-  console.log(dcid);
+    const id = localStorage.getItem('dcid');
+    console.log(id);
+ 
     const logout = (event) => {
         event.preventDefault();
         
@@ -51,31 +53,7 @@ const DocotorDashboard = () => {
                         </li>
                         <li class="nav-item">
                             <NavLink className="nav-link active"
-                                to={`${url}/adddoctor`}>
-                                <span class="item-text">Add Doctor</span>
-                            </NavLink>
-                        </li>
-                        <li class="nav-item">
-                            <NavLink className="nav-link active"
-                                to={`${url}/addreceptionist`}>
-                                <span class="item-text">Add Receptionst</span>
-                            </NavLink>
-                        </li>
-                        <li class="nav-item">
-                            <NavLink className="nav-link active"
-                                to={`${url}/allreceptionist`}>
-                                <span class="item-text">All Receptionst</span>
-                            </NavLink>
-                        </li>
-                        <li class="nav-item">
-                            <NavLink className="nav-link active"
-                                to={`${url}/doctorlist`}>
-                                <span class="item-text">Doctor List</span>
-                            </NavLink>
-                        </li>
-                        <li class="nav-item">
-                            <NavLink className="nav-link active"
-                                to={`${url}/patientlist`}>
+                                to={`${url}/allpatient`}>
                                 <span class="item-text">All Patient</span>
                             </NavLink>
                         </li>
@@ -121,7 +99,7 @@ const DocotorDashboard = () => {
 
                     <Switch>
                         <Route exact path={path}>
-                       
+                        <MyPtAppointment></MyPtAppointment>
                         </Route>
                         <Route exact path={`${path}/myaprofile`}>
                         <DoctorMyProfile></DoctorMyProfile>
@@ -132,41 +110,10 @@ const DocotorDashboard = () => {
                         <Route exact path={`${path}/appointment`}>
                         <MyPtAppointment></MyPtAppointment>
                         </Route>
-                        {/* <Route exact path={`${path}/doctorlist`}>
-                        <Doctorlist></Doctorlist>
+                        <Route exact path={`${path}/allpatient`}>
+                        <AllPatientlist></AllPatientlist>
                         </Route>
-                        <Route exact path={`${path}/patientlist`}>
-                        <Patientlist></Patientlist>
-                        </Route>
-                        <Route exact path={`${path}/alappointment`}>
-                        <Allappointments></Allappointments>
-                        </Route>
-                        <Route exact path={`${path}/adddoctor`}>
-                        <AddDoctor></AddDoctor>
-                        </Route>
-                        <Route exact path={`${path}/addreceptionist`}>
-                        <AddReceptionist></AddReceptionist>
-                        </Route>
-                        <Route exact path={`${path}/allreceptionist`}>
-                        <Allreceptionist></Allreceptionist>
-                        </Route>
-                        <Route exact path={`${path}/updatereceptionist/:id`}>
-                        <EditReceptionst></EditReceptionst>
-                        </Route>
-                        <Route exact path={`${path}/editdoctor/:id`}>
-                        <EditDoctor></EditDoctor>
-                        </Route>
-                        <Route exact path={`${path}/myaprofile`}>
-                        <Myprofile></Myprofile>
-                        </Route>
-                        <Route exact path={`${path}/editadminprofile/:id`}>
-                        <EditAdmitProfile></EditAdmitProfile>
-                        </Route> */}
-
-                       
-                        
-                        
-                    </Switch>
+                     </Switch>
 
                 </div>
             </div>

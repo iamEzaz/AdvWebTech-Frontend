@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 const MyPtAppointment = () => {
     const [user, setUser] = useState({});
     const [appointment, setAppointment] = useState([]);
+    const [status, setStatus] = useState({});
     const id = parseInt(localStorage.getItem('id'));
 
 
@@ -33,8 +34,7 @@ const MyPtAppointment = () => {
    
 
     const handledelete = id => {
-        
-        axios.post(`http://localhost:8000/api/deleteappointment/86`)
+       axios.post(`http://localhost:8000/api/deleteappointment/${id}`)
             .then(res => {
                 if (res.data) {
                     console.log(res.data);
@@ -45,9 +45,22 @@ const MyPtAppointment = () => {
                     alert("Delete Eror");
                 }
             })
-    
-
-}
+    }
+    const handleupdate = apt => {
+        setStatus(apt);
+        console.log(status);
+       axios.post(`http://localhost:8000/api/updateaptstatus`,apt)
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data);
+                 
+                    alert("Status Update Success");
+                }
+                else {
+                    alert("Status Update Eror");
+                }
+            })
+    }
 
 
 
@@ -68,7 +81,9 @@ const MyPtAppointment = () => {
                                        <th >Patient Email</th>
                                        <th >Date</th>
                                        <th >Slot</th>
+                                       <th >Status</th>
                                        <th >Action</th>
+                                       <th >done</th>
                                       
                                        
                                    </tr>
@@ -83,7 +98,9 @@ const MyPtAppointment = () => {
                                                <td>{apt.pemail}</td>
                                                <td>{apt.day}</td>
                                                <td>{apt.slot}</td>
+                                               <td>{apt.status}</td>
                                              <td><button onClick={()=>handledelete(apt.id)}> Delete </button></td> 
+                                             <td><button onClick={()=>handleupdate(apt)}> Update </button></td> 
                                                
                                                
                                            </tr>

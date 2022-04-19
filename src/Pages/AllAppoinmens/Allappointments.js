@@ -15,21 +15,7 @@ const Allappointments = () => {
             });
     }, [appointments]);
 
-    const handledelete = id => {
-        
-        axios.post(`http://localhost:8000/api/dltappointment/${id}`)
-            .then(res => {
-                if (res) {
-                 
-                    alert("Delete Success");
-                }
-                else {
-                    alert("Delete Eror");
-                }
-            })
-    
-
-}
+   
     return (
         <section>
          <div className="">
@@ -46,7 +32,7 @@ const Allappointments = () => {
                                         <th >Patient Email</th>
                                         <th >Date</th>
                                         <th >Slot</th>
-                                        <th >Action</th>
+                                    
                                        
                                         
                                     </tr>
@@ -61,7 +47,7 @@ const Allappointments = () => {
                                                 <td>{dc.pemail}</td>
                                                 <td>{dc.day}</td>
                                                 <td>{dc.slot}</td>
-                                                <td><button onClick={()=>handledelete(dc.id)}> Delete </button></td>
+                                                
                                                 
                                                 
                                             </tr>

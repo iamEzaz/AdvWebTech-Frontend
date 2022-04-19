@@ -44,9 +44,9 @@ const Login = () => {
                              localStorage.setItem('email', response.data.email);
                              localStorage.setItem('name', response.data.name);
                              localStorage.setItem('username', response.data.username);
-                            console.log(response.data.username);
+                             localStorage.setItem('dcid', response.data.dcid);
                             if(response.data.type === 'admin'){
-                                localStorage.setItem('dcid', response.data.dcid);
+                                
                                 history.push("/dashboard");
                             }
                             else if(response.data.type === 'doctor'){

@@ -27,9 +27,14 @@ function App() {
        :
        <Login></Login>
        }
+       {
+         id ?
        <Route path="/docotordashboard">
          <DocotorDashboard></DocotorDashboard>
        </Route>
+        :
+        <Login></Login>
+        }
        
        </Switch></BrowserRouter>
     </div>
