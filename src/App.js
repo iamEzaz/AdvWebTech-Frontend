@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Login from './Login/Login';
+import DocotorDashboard from './Doctor/DoctorDshboard/DocotorDashboard';
 import AdminDashboard from './Pages/AminDashboard.js/AdminDashboard';
 const id = parseInt(localStorage.getItem('id'));
 
@@ -26,6 +27,9 @@ function App() {
        :
        <Login></Login>
        }
+       <Route path="/docotordashboard">
+         <DocotorDashboard></DocotorDashboard>
+       </Route>
        
        </Switch></BrowserRouter>
     </div>
