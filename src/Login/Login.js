@@ -31,7 +31,7 @@ const Login = () => {
                    
                 }
                 else {
-                    if (response.data.status === "notFound") {
+                    if (response.data.status === "Not Found") {
                         alert("User Not Found");
                        
 
